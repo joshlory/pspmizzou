@@ -9,5 +9,5 @@ urlpatterns = patterns('',
     (r'^committees/', include('pspmizzou.committees.urls')),
     (r'^brothers/', include('pspmizzou.brothers.urls')),
 
-    (r'^admin/', include(admin.site.urls)),
+#    (r'^admin/', include(admin.site.urls)),
 )

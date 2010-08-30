@@ -22,3 +22,6 @@ def view_events_overview(request):
     for event in events.fetch(limit=40):
         context['events'].append(event)
     return render_to_response("events_overview.html", context)
+
+def view_committee_events(request, committee):
+    return HttpResponse("Committee events view: " + committee)

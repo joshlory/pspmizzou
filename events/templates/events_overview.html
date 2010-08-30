@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block main_content %}
+
+<h2>Upcomming Events</h2>
+
+{% for event in events %}
+    {% ifchanged %}<h3>{{ event.start_datetime|naturalday|capfirst }}</h3>{% endifchanged %}
+    <li>
+    	<a href="{% url view_event event.key %}/">{{ event.title }}</a>
+    	{{ event.start_datetime|naturalday|capfirst }} at {{ event.start_datetime|time }}
+    	<p>{% ifnotequal event.tagline None %}{{ event.tagline }}{% endifnotequal %}</p>
+    </li>
+{% endfor %}
+
+{% comment %}
+<table class="standard-tbl" cellspacing="0">
+<tr><th>Name</th><th>Start Time</th></tr>
+{% for event in events %}
+<tr>
+    <td><a href="{% url view_event event.id %}/">{{ event.title }}</a></td>
+    <td>{{ event.start_datetime|naturalday|capfirst }} at {{ event.start_datetime|time }}</td>
+</tr>
+{% endfor %}
+</table>
+{% endcomment %}
+
+{% endblock %}

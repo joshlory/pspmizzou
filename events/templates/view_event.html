@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block main_content %}
+
+<h2>Event Detail View</h2>
+
+<p>{{ event.title }}</p>
+<p>{{ event.description }}</p>
+<p>{{ event.start_datetime|naturalday|capfirst }} at {{ event.start_datetime|time }}</p>
+
+{% endblock %}

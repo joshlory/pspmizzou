@@ -1,0 +1,33 @@
+body {
+    font: 12px "Lucida Sans Unicode","Lucida Grande",sans-serif;
+    color: #333;
+    text-shadow: 0 1px #ddd;
+    border-color: #999;
+    margin: 1em auto;
+    width: 720px;
+}
+h2 {
+    font-size: 1.5em;
+    padding: 0 0 5px 0;
+    margin: 0.5em 0;
+    border-bottom: 3px double #999;
+}
+h3 {
+    margin: 0.5em 0;
+    border-bottom: 1px solid #999;
+}
+.standard-tbl {
+    /*border-bottom: 3px double #999;*/
+}
+.standard-tbl td, th {
+    padding: 8px 12px;
+    border-bottom: 1px solid #999;
+    text-align: left;
+}
+.standard-tbl th {
+    /**/
+}
+li {
+	list-style-type: none;
+	margin: 0.5em 0;
+}

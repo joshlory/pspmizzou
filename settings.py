@@ -17,7 +17,17 @@
 import os
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+#TEMPLATE_DEBUG = DEBUG
+
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+
+# Absolute path to the directory that holds media.
+# Example: "/home/media/media.lawrence.com/"
+TEMP_MEDIA_URL = "/static/"
+#if DEBUG:
+#    MEDIA_URL = os.path.join(SITE_ROOT, "static/")
+#else:
+#    MEDIA_URL = '' #TODO
 
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
@@ -64,7 +74,7 @@ MEDIA_URL = ''
 ADMIN_MEDIA_PREFIX = '/media/'
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'hvhxfm5u=^*v&doo#oq8x*eg8+1&9sxbye@=umutgn^t_sg_nx'
+SECRET_KEY = 'hvzxfm5u=^*v&doo#oq8x*eg8+1&9sxbye@=umutgn^t_sg_nx'
 
 # Ensure that email is not sent via SMTP by default to match the standard App
 # Engine SDK behaviour. If you want to sent email via SMTP then add the name of
@@ -91,20 +101,24 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.i18n',
 #    'django.core.context_processors.media',  # 0.97 only.
 #    'django.core.context_processors.request',
+    'context_processors.media_url',
 )
 
 ROOT_URLCONF = 'urls'
 
 ROOT_PATH = os.path.dirname(__file__)
+
 TEMPLATE_DIRS = (
-    os.path.join(ROOT_PATH, 'templates')
+    #os.path.join(ROOT_PATH, 'templates'),
+    ROOT_PATH + "/templates",
 )
 
 INSTALLED_APPS = (
-     'appengine_django',
-     'pspmizzou.events',
+    'appengine_django',
+    'events',
 #    'django.contrib.auth',
 #    'django.contrib.contenttypes',
 #    'django.contrib.sessions',
 #    'django.contrib.sites',
+    'django.contrib.humanize',
 )

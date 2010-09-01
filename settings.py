@@ -16,6 +16,18 @@
 
 import os
 
+COMMITTEES = [
+    'service',
+    'das',
+    'fellowship',
+    'rush',
+    'initiation',
+    'fundraising',
+    'alumni',
+    'rec_sports',
+    'regionals',
+]
+
 DEBUG = True
 #TEMPLATE_DEBUG = DEBUG
 

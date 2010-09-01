@@ -51,7 +51,7 @@
     <li>
     	<a href="{% url view_event event.key %}/">{{ event.title }}</a>
     	{{ event.start_datetime|naturalday|capfirst }} at {{ event.start_datetime|time }}
-    	<p>{% ifnotequal event.tagline None %}{{ event.tagline }}{% endifnotequal %}</p>
+    	<p class="smalltext">{% ifnotequal event.tagline None %}{{ event.tagline }}{% endifnotequal %}</p>
     </li>
 {% empty %}
 	<li>No events found.</li>

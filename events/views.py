@@ -16,7 +16,12 @@ def view_event(request, event_id):
 
 def view_events_overview(request):
     context = RequestContext(request, {})
-    cal = EventCalendar()
+    now = datetime.now()
+    month_query = Event.all() \
+        .filter("start_datetime >=", datetime(now.year, now.month, 1)) \
+        .filter("start_datetime <", datetime(now.year, now.month + 1, 1))
+    month_events = month_query.fetch(limit=40)
+    cal = EventCalendar(month_events)
     now = datetime.now()
     context['calendar'] = cal.formatmonth(now.year, now.month)
     query = Event.all().order("start_datetime")

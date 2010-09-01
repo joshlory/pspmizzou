@@ -1,7 +1,7 @@
 body {
     font: 12px "Lucida Sans Unicode","Lucida Grande",sans-serif;
     color: #333;
-    text-shadow: 0 1px #ddd;
+    text-shadow: 1px 1px #ddd;
     border-color: #999;
     margin: 1em auto;
     width: 720px;
@@ -31,22 +31,36 @@ li {
 	list-style-type: none;
 	margin: 0.5em 0;
 }
+table.month {
+	table-layout: fixed;
+	width: 600px;
+}
 .month td {
 	border: 1px solid #999;
 	width: 80px;
 	height: 80px;
 	font-size: 10px;
+	white-space: nowrap;
+	overflow: hidden;
 }
 .month th {
 	text-align: center;
+}
+.today {
+	background: #def;
 }
 th.month {
 	text-align: left;
 }
 .cal_day {
+	background: #fff;
 	border-right: 1px solid #999;
 	border-bottom: 1px solid #999;
 	/*float: right;*/
 	width: 20px;
 	text-align: center;
+}
+.smalltext {
+	font-size: 0.85em;
+	color: #666;
 }

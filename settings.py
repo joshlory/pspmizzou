@@ -35,7 +35,7 @@ SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-TEMP_MEDIA_URL = "/static/"
+TEMP_MEDIA_URL = "/static"
 #if DEBUG:
 #    MEDIA_URL = os.path.join(SITE_ROOT, "static/")
 #else:

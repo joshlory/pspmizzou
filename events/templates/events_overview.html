@@ -3,7 +3,48 @@
 
 {% block main_content %}
 
-<h2>Upcomming Events</h2>
+<style type="text/css">
+	.inline_menu {
+		height: 30px;
+	}
+	.inline_menu > li {
+		display: inline;
+		float: left;
+		padding: 0 2px;
+	}
+	.inline_menu > li > a {
+		color: #fff;
+		text-shadow: none;
+		text-decoration: none;
+		background: #000;
+		padding: 3px 5px;
+	}
+	.inline_menu > li > a:hover {
+		background: #603;
+	}
+	.sep {
+		/*border-right: 1px solid #000;*/
+	}
+</style>
+
+<h2>{% block events_h2 %}Upcomming Events{% endblock %}</h2>
+
+<div>
+	<ul class="inline_menu">
+		<li class="sep"><a href="{% url view_events_overview %}">All</a></li>
+		<li class="sep"><a href="{% url view_committee_events 'service' %}">Service</a></li>
+		<li class="sep"><a href="{% url view_committee_events 'fellowship' %}">Fellowship</a></li>
+		<li class="sep"><a href="{% url view_committee_events 'das' %}">DAS</a></li>
+		<li class="sep"><a href="{% url view_committee_events 'rush' %}">Rush</a></li>
+		<li class="sep"><a href="{% url view_committee_events 'initiation' %}">Initiation</a></li>
+		<li class="sep"><a href="{% url view_committee_events 'fundraising' %}">Fundraising</a></li>
+		<li class="sep"><a href="{% url view_committee_events 'alumni' %}">Alumni</a></li>
+		<li class=""><a href="{% url view_committee_events 'rec_sports' %}">Rec Sports</a></li>
+		<li class=""><a href="{% url view_committee_events 'regionals' %}">Regionals</a></li>
+	</ul>
+</div>
+
+{{ calendar|safe }}
 
 {% for event in events %}
     {% ifchanged %}<h3>{{ event.start_datetime|naturalday|capfirst }}</h3>{% endifchanged %}
@@ -12,6 +53,8 @@
     	{{ event.start_datetime|naturalday|capfirst }} at {{ event.start_datetime|time }}
     	<p>{% ifnotequal event.tagline None %}{{ event.tagline }}{% endifnotequal %}</p>
     </li>
+{% empty %}
+	<li>No events found.</li>
 {% endfor %}
 
 {% comment %}

@@ -31,3 +31,22 @@ li {
 	list-style-type: none;
 	margin: 0.5em 0;
 }
+.month td {
+	border: 1px solid #999;
+	width: 80px;
+	height: 80px;
+	font-size: 10px;
+}
+.month th {
+	text-align: center;
+}
+th.month {
+	text-align: left;
+}
+.cal_day {
+	border-right: 1px solid #999;
+	border-bottom: 1px solid #999;
+	/*float: right;*/
+	width: 20px;
+	text-align: center;
+}

@@ -3,7 +3,7 @@ from events.views import view_event, view_events_overview, view_committee_events
 
 urlpatterns = patterns('',
     url(r'^id/(?P<event_id>\w+)/?$', view_event, name='view_event'),
-    url(r'^(?P<committee>(' + '|'.join(['service', 'das', 'etc']) + '))/?$',
+    url(r'^(?P<committee>(' + '|'.join(['service', 'das', 'fellowship', 'rush', 'initiation', 'fundraising', 'alumni', 'rec_sports', 'regionals']) + '))/?$',
         view_committee_events, name='view_committee_events'),
     url(r'^$', view_events_overview, name='view_events_overview'),
 )

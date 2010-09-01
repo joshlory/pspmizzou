@@ -1,9 +1,10 @@
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from django.template import loader, Context
 
-from events.models import Event
+from events.models import Event, EventCalendar
+
+from datetime import datetime
 
 def view_event(request, event_id):
     #return HttpResponse("event detail view: " + event_id)
@@ -15,13 +16,23 @@ def view_event(request, event_id):
 
 def view_events_overview(request):
     context = RequestContext(request, {})
-    events = Event.all()
-    if events.count(1) < 1:
-        return HttpResponse("No events found.")
-    context['events'] = []
-    for event in events.fetch(limit=40):
-        context['events'].append(event)
+    cal = EventCalendar()
+    now = datetime.now()
+    context['calendar'] = cal.formatmonth(now.year, now.month)
+    query = Event.all().order("start_datetime")
+    events = query.fetch(limit=40)
+    if events != None:
+        context['events'] = []
+        for event in events:
+            context['events'].append(event)
     return render_to_response("events_overview.html", context)
 
 def view_committee_events(request, committee):
-    return HttpResponse("Committee events view: " + committee)
+    context = RequestContext(request, {})
+    events = Event.all().filter("committee", committee).order("start_datetime")
+    context['committee'] = committee
+    if events != None:
+        context['events'] = []
+        for event in events.fetch(limit=40):
+            context['events'].append(event)
+    return render_to_response("committee_events.html", context)

@@ -33,6 +33,7 @@ class EventCalendar(HTMLCalendar):
     
     def __init__(self, events):
         super(EventCalendar, self).__init__()
+        self.setfirstweekday(6)
         self.events = self.by_day(events)
     
     def by_day(self, events):

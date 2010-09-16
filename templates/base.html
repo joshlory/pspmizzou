@@ -5,13 +5,36 @@
 <title>{% block page_title %}Phi Sigma Pi - Mizzou{% endblock %}</title>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<link rel="stylesheet" href="{{ media_url }}/css/reset.css"/>
-<link rel="stylesheet" href="{{ media_url }}/css/styles.css"/>
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Molengo" type="text/css">
+<link rel="stylesheet" href="{{ media_url }}/css/reset.css" type="text/css">
+<link rel="stylesheet" href="{{ media_url }}/css/styles.css" type="text/css">
 
 </head>
 <body>
-
-{% block main_content %}{% endblock %}
-
+	<div id="header">
+		<div id="login">
+			<input type="text" name="user" value="Username"></input>
+			<input type="password" name="pass" value="Password"></input>
+			<input type="submit" value="Login"></input>
+		</div>
+	</div>
+	<div id="main">
+		<div id="menu_links">
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="">Events</a></li>
+				<li><a href="">Committees</a></li>
+				<li><a href="">Brothers</a></li>
+			</ul>
+		</div>
+	    <div id="wrapper">
+	        <div id="sidebar">
+	        	{% block sidebar %}{% endblock %}
+	        </div>
+	        <div id="content">
+				{% block main_content %}{% endblock %}
+			</div>
+		</div>
+	</div>
 </body>
 </html>

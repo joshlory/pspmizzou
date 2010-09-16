@@ -1,10 +1,136 @@
+@font-face {
+  font-family: 'Museo Sans';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Museo Sans'), url('../font/museosans.otf') format('truetype');
+}
 body {
-    font: 12px "Lucida Sans Unicode","Lucida Grande",sans-serif;
+    font: 12px 'Museo Sans', arial, sans-serif;
+    /*font: 12px "Lucida Sans Unicode","Lucida Grande",sans-serif;*/
     color: #333;
     text-shadow: 1px 1px #ddd;
-    border-color: #999;
-    margin: 1em auto;
-    width: 720px;
+    /*border-color: #999;*/
+    background: #333 url('../img/bg_repeat.png') top center repeat;
+    margin: 0 7px;
+    min-height: 100%;
+}
+p {
+	line-height: 1.3em;
+}
+a, a:link, a:hover, a:active, a:visited {
+	color: #00c;
+	text-shadow: none;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+input[type=text], input[type=password] {
+	height: 12px;
+	width: 120px;
+	padding: 4px;
+	border: 1px solid #000;
+	font-size: 11px;
+	overflow: hidden;
+}
+input[type=submit] {
+	color: #fff;
+	/*background: #1c0022;
+	border-top-color: #2a0033;
+	border-left-color: #2a0033;
+	border-bottom-color: #50006f;
+	border-right-color: #50006f;*/
+	background: #2a0033;
+	border-top: 2px solid #620084;
+	border-left: 2px solid #620084;
+	border-bottom: 2px solid #13001a;
+	border-right: 2px solid #13001a;
+}
+#login {
+	position: absolute;
+	right: 50%;
+	margin-right: -450px;
+	bottom: 10px;
+}
+#header {
+	position: relative;
+    width: 100%;
+    height: 196px;
+    background: #1c0022 url('../img/header.png') top center no-repeat;
+    border-bottom: 1px solid #000;
+    -moz-box-shadow: 0 0 7px #000;
+    -webkit-box-shadow: 0 0 7px #000;
+    box-shadow: 0 0 7px #000;
+    z-index: 200;
+}
+#main {
+	position: relative;
+	background: transparent url('../img/bg_top.png') top center repeat-x;
+	-moz-box-shadow: 0 0 7px #000;
+    -webkit-box-shadow: 0 0 7px #000;
+    box-shadow: 0 0 7px #000;
+    overflow: hidden;
+}
+#menu_links {
+	height: 28px;
+	padding: 0 20px;
+	margin: 0 auto;
+	color: #000;
+	background: #fc0;
+	border-top: 2px solid #000;
+	border-bottom: 3px solid #000;
+	-moz-box-shadow: 0 0 7px #000;
+    -webkit-box-shadow: 0 0 7px #000;
+    box-shadow: 0 0 7px #000;
+}
+#menu_links ul {
+	width: 900px;
+	margin: 0 auto;
+}
+#menu_links li {
+	float: left;
+	margin: 0;
+	height: 28px;
+}
+#menu_links li a {
+	display: block;
+	height: 20px;
+	padding: 4px 6px 2px 6px;
+	-moz-border-radius-bottomright: 3px;
+	-moz-border-radius-bottomleft: 3px;
+	-webkit-border-radius-bottom-right: 3px;
+	-webkit-border-radius-bottom-left: 3px;
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+	font: 14px "Lucida Sans Unicode","Lucida Grande",sans-serif;
+	font-variant: small-caps;
+	color: #000;
+}
+#menu_links li a:hover {
+	color: #fff;
+	background: #000;
+}
+#wrapper {
+	width: 900px;
+	padding: 10px 20px;
+	margin: 0 auto;
+	background: #fff;
+	-moz-box-shadow: 0 0 5px #1f1f1f;
+	-webkit-box-shadow: 0 0 5px #1f1f1f;
+	box-shadow: 0 0 5px #1f1f1f;
+	overflow: auto;
+}
+#sidebar {
+	float: right;
+	width: 280px;
+}
+#content {
+    width: 600px;
+    padding-right: 20px;
+    /*background: #fff;
+    border-right: 1px solid #000;
+    border-left: 1px solid #000;*/
+    margin: 0 300px 0 0;
 }
 h2 {
     font-size: 1.5em;
@@ -47,10 +173,20 @@ table.month {
 	text-align: center;
 }
 .today {
-	background: #def;
+	background: #bdf;
 }
 th.month {
-	text-align: left;
+	/*text-align: left;*/
+	font-size: 1.2em;
+}
+th.mon, th.tue, th.wed, th.thu, th.fri, th.sat, th.sun {
+	padding: 0;
+}
+th.sat {
+	border-right: 1px solid #999;
+}
+th.sun {
+	border-left: 1px solid #999;
 }
 .cal_day {
 	background: #fff;

@@ -5,8 +5,8 @@ urlpatterns = patterns('',
     
     (r'^events/', include('events.urls')),
     (r'^committees/', include('committees.urls')),
-#    (r'^brothers/', include('brothers.urls')),
-#    (r'$', view_index),
+#    (r'^brothers', include('brothers.urls')),
+    url(r'^$', view_index, name='view_index'),
 
-#    (r'^admin/', include(admin.site.urls)),
+#    (r'^admin', include(admin.site.urls)),
 )

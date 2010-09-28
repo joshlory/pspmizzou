@@ -1,7 +1,37 @@
 {% extends "base.html" %}
 
+{% block sidebar %}
+
+<div style="width: 260px; height: 300px; padding: 10px; background: #ccc; margin-bottom: 10px; font-size: 10px; text-shadow: none;">SIDEBAR 1</div>
+
+<div style="width: 260px; height: 300px; padding: 10px; background: #ccc; margin-bottom: 10px; font-size: 10px; text-shadow: none;">SIDEBAR 2</div>
+
+{% endblock %}
+
 {% block main_content %}
 
-Index view
+<style type="text/css">
+	p {
+		text-align: justify;
+	}
+</style>
+
+<div style="font-size: 36px; line-height: 36px; float: left; margin-right: 10px; ">Phi Sigma Pi</div>
+<p> is a national, coeducational honor fraternity that blends the best features of 
+academic honor societies, service organizations, and social fraternities into one 
+dynamic student organization. Founded in 1916, Phi Sigma Pi has grown to 103 
+collegiate chapters with approximately 5,000 undergraduate members and over 25,710 
+alumni members. Phi Sigma Pi is an active organization. We host educational programs, 
+service projects, and social events. On the national level, we have conventions, banquets, 
+and grand chapter meetings to unite all brothers in Phi Sigma Pi.</p>
+
+
+<img src="{{ MEDIA_URL }}/img/photo/dsc02876.jpg" width="400" height="300" style="float: left; margin: 10px 10px 10px 0;"></img>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam risus ligula, ultrices in laoreet vitae, commodo sed mi. Nam vitae ante eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Curabitur hendrerit auctor diam, rutrum dictum diam aliquet ac. Proin dignissim tellus vel diam sollicitudin vulputate. Aliquam dui ligula, sagittis eu blandit at, posuere non neque. Donec dignissim suscipit enim in pretium. Aliquam auctor dui in lectus convallis ornare. Nunc vel cursus mi. Nulla dignissim tellus eget neque tincidunt in faucibus nisi dictum. Vestibulum lacus leo, scelerisque eu gravida nec, varius blandit erat. Nullam sodales sollicitudin elementum. Cras eget posuere quam. Nulla id velit in lacus viverra dapibus non viverra magna. Mauris id erat placerat ipsum ornare dapibus. Donec et turpis vitae lectus accumsan porta. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse aliquam aliquet nunc, ut eleifend tortor commodo eget. Proin ipsum lectus, interdum in dignissim sed, condimentum in metus.</p>
+
+<p>Pellentesque diam felis, porttitor nec accumsan a, molestie vel odio. Nulla id leo ut sem aliquam interdum nec eu ligula. Suspendisse potenti. Nulla consectetur rhoncus malesuada. Aenean adipiscing purus vel dolor tincidunt non ornare arcu porta. Nullam quis metus sit amet eros aliquam scelerisque. Praesent euismod elementum metus, a molestie nisl faucibus quis. Sed ut augue neque. Maecenas in felis dolor, a laoreet tortor. Praesent euismod molestie aliquet. Nullam vulputate lorem id risus venenatis vel pellentesque urna venenatis.</p>
+
+<p>Aliquam non interdum nisl. Quisque ut tincidunt magna. Nulla facilisi. Sed condimentum, neque eu pharetra feugiat, elit libero venenatis nulla, sed vestibulum elit felis vitae massa. Maecenas quis erat eget leo pulvinar eleifend. Morbi ut orci sit amet arcu tristique hendrerit. Cras vel rhoncus dui. Nulla id adipiscing lorem. Praesent quis tortor felis. Curabitur rutrum pellentesque arcu a tincidunt. Vestibulum felis odio, interdum non interdum eget, consectetur a tortor. Vestibulum et metus faucibus ante auctor fermentum. Vestibulum at magna neque. Curabitur eros lectus, tempor quis aliquam ut, cursus euismod sem. Cras urna diam, iaculis sed vulputate commodo, volutpat non nisl. Integer eget augue a sapien bibendum dictum vitae ac diam. Praesent tristique, nibh vitae egestas elementum, lectus sapien luctus lacus, vitae porta libero orci id lorem. Suspendisse fermentum iaculis fringilla. Nulla consectetur libero at augue porttitor posuere.</p>
 
 {% endblock %}

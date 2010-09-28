@@ -128,7 +128,6 @@ INSTALLED_APPS = (
     'appengine_django',
     'events',
     'committees',
-    'index',
 #    'django.contrib.auth',
 #    'django.contrib.contenttypes',
 #    'django.contrib.sessions',

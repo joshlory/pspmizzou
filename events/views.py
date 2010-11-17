@@ -17,15 +17,13 @@ def view_event(request, event_id):
 def view_events_overview(request):
     context = RequestContext(request, {})
     now = datetime.now()
-    month_query = Event.all() \
-        .filter("start_datetime >=", datetime(now.year, now.month, 1)) \
-        .filter("start_datetime <", datetime(now.year, now.month + 1, 1))
-    month_events = month_query.fetch(limit=40)
+    month_events = Event.objects \
+        .filter(start_datetime__gte=datetime(now.year, now.month, 1)) \
+        .filter(start_datetime__lt=datetime(now.year, now.month + 1, 1))
     cal = EventCalendar(month_events)
     now = datetime.now()
     context['calendar'] = cal.formatmonth(now.year, now.month)
-    query = Event.all().order("start_datetime")
-    events = query.fetch(limit=40)
+    events = Event.objects.order_by("start_datetime")[:50] # limit 50
     if events != None:
         context['events'] = []
         for event in events:
@@ -34,10 +32,10 @@ def view_events_overview(request):
 
 def view_committee_events(request, committee):
     context = RequestContext(request, {})
-    events = Event.all().filter("committee", committee).order("start_datetime")
+    events = Event.objects.filter(committee=committee).order_by("start_datetime")
     context['committee'] = committee
     if events != None:
         context['events'] = []
-        for event in events.fetch(limit=40):
+        for event in events:
             context['events'].append(event)
     return render_to_response("committee_events.html", context)

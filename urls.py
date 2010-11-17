@@ -1,4 +1,8 @@
 from django.conf.urls.defaults import *
+from django.conf import settings
+from django.contrib import admin
+admin.autodiscover()
+
 from views import view_index
 
 urlpatterns = patterns('',
@@ -8,5 +12,11 @@ urlpatterns = patterns('',
 #    (r'^brothers', include('brothers.urls')),
     url(r'^$', view_index, name='view_index'),
 
-#    (r'^admin', include(admin.site.urls)),
+    (r'^admin', include(admin.site.urls)),
 )
+
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.ROOT_PATH + "/static"}),
+    )
+    

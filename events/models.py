@@ -1,26 +1,25 @@
-from appengine_django.models import BaseModel
+from django.db import models
+from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 
-from google.appengine.ext import db
 from calendar import HTMLCalendar
 from itertools import groupby
 from datetime import date
 
-# @see: GAE "Modeling Entity Relationships" 
-# http://code.google.com/appengine/articles/modeling.html
+from pspmizzou.committees.models import Committee
 
-class Event(BaseModel):
-    id = db.Key()
-    start_datetime = db.DateTimeProperty()
-    end_datetime = db.DateTimeProperty()
-    title = db.StringProperty()
-    tagline = db.StringProperty()
-    location = db.StringProperty()
-    description = db.StringProperty()
-    created = db.DateTimeProperty(auto_now_add=True)
-    owner = db.StringProperty() #ReferenceProperty()
-    committee = db.StringProperty() #ReferenceProperty()
-    guests = db.StringProperty()
+class Event(models.Model):
+    #id = db.Key()
+    start_datetime = models.DateTimeField()
+    end_datetime = models.DateTimeField()
+    title = models.CharField(max_length=127)
+    tagline = models.CharField(max_length=255)
+    location = models.CharField(max_length=255)
+    description = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    owner = models.ForeignKey(User) #models.CharField(max_length=127)
+    committee = models.CharField(max_length=127) #models.ForeignKey(Committee)
+    guests = models.ManyToManyField(User, related_name="attending")
     
     def __unicode__(self):
         return self.title

@@ -1,2 +1,5 @@
 *.pyc
 pspmizzou.db
+local_settings.py
+.project
+.pydevproject

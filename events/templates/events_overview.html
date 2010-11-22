@@ -59,7 +59,7 @@
 					<span class="day">{{ event.start_datetime|date:"jS" }}</span>
 				</div>
 				<p class="event_description">
-				<a class="event_link" href="{% url view_event event.key %}/">{{ event.title }}</a>
+				<a class="event_link" href="{% url view_event event.id %}">{{ event.title }}</a>
 				{{ event.description|truncatewords:20 }}</p>
 			</li>
     {% ifchanged event.start_datetime|naturalday %}
@@ -127,7 +127,7 @@
 {% for event in events %}
     {% ifchanged %}<h3>{{ event.start_datetime|naturalday|capfirst }}</h3>{% endifchanged %}
     <li>
-    	<a href="{% url view_event event.key %}/">{{ event.title }}</a>
+    	<a href="{% url view_event event.id %}/">{{ event.title }}</a>
     	{{ event.start_datetime|naturalday|capfirst }} at {{ event.start_datetime|time }}
     	<p class="smalltext">{% ifnotequal event.tagline None %}{{ event.tagline }}{% endifnotequal %}</p>
     </li>

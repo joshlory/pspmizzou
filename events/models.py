@@ -6,7 +6,7 @@ from calendar import HTMLCalendar
 from itertools import groupby
 from datetime import date
 
-from pspmizzou.committees.models import Committee
+from committees.models import Committee
 
 class Event(models.Model):
     #id = db.Key()
@@ -19,7 +19,10 @@ class Event(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(User) #models.CharField(max_length=127)
     committee = models.CharField(max_length=127) #models.ForeignKey(Committee)
-    guests = models.ManyToManyField(User, related_name="attending")
+    guests = models.ManyToManyField(User, related_name="attending", null=True)
+    
+    def get_absolute_url(self):
+        return reverse('view_event', args=[self.id])
     
     def __unicode__(self):
         return self.title
@@ -59,7 +62,7 @@ class EventCalendar(HTMLCalendar):
                 body = []
                 for event in self.events[day]:
                     body.append("<p><a href='" + 
-                        reverse('view_event', args=[event.key()]) + "'>" +
+                        reverse('view_event', args=[event.id]) + "'>" +
                         self.truncate(event.title, 14) + "</a></p>")
                 return self.day_cell(cssclass, ''.join(body), day)
             return self.day_cell(cssclass, "&nbsp;", day)

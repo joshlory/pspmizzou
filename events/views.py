@@ -9,7 +9,7 @@ from datetime import datetime
 def view_event(request, event_id):
     #return HttpResponse("event detail view: " + event_id)
     context = RequestContext(request, {})
-    event = Event.get(event_id)
+    event = Event.objects.get(id=event_id)
     #event = query.fetch(limit=1)
     context['event'] = event
     return render_to_response("view_event.html", context)

@@ -14,6 +14,16 @@ def view_event(request, event_id):
     context['event'] = event
     return render_to_response("view_event.html", context)
 
+def view_events_quickview(request):
+    context = RequestContext(request, {})
+    now = datetime.now()
+    month_events = Event.objects \
+        .filter(start_datetime__gte=datetime(now.year, now.month, 1)) \
+        .filter(start_datetime__lt=datetime(now.year, now.month + 1, 1))
+    cal = EventCalendar(month_events, quickview=True)
+    context['calendar'] = cal.formatmonth(now.year, now.month)
+    return render_to_response("events_quickview.html", context)
+
 def view_events_overview(request):
     context = RequestContext(request, {})
     now = datetime.now()
@@ -21,7 +31,6 @@ def view_events_overview(request):
         .filter(start_datetime__gte=datetime(now.year, now.month, 1)) \
         .filter(start_datetime__lt=datetime(now.year, now.month + 1, 1))
     cal = EventCalendar(month_events)
-    now = datetime.now()
     context['calendar'] = cal.formatmonth(now.year, now.month)
     events = Event.objects.order_by("start_datetime")[:50] # limit 50
     if events != None:

@@ -33,10 +33,11 @@ class Event(models.Model):
 
 class EventCalendar(HTMLCalendar):
     
-    def __init__(self, events):
+    def __init__(self, events, **kwargs):
         super(EventCalendar, self).__init__()
         self.setfirstweekday(6)
         self.events = self.by_day(events)
+        self.quickview = (kwargs.get('quickview') == True)
     
     def by_day(self, events):
         field = lambda event: event.start_datetime.day
@@ -59,6 +60,9 @@ class EventCalendar(HTMLCalendar):
             if date.today() == date(self.year, self.month, day):
                 cssclass += ' today'
             if day in self.events:
+                if self.quickview:
+                    cssclass += ' has_event'
+                    return self.day_cell(cssclass, "&nbsp;", day)
                 body = []
                 for event in self.events[day]:
                     body.append("<p><a href='" + 

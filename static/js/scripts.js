@@ -6,12 +6,22 @@ if (window.pspmizzou === undefined) {
 }
 
 $(function() {
-	$("#menu_links").delegate("a", "click", function(e) {
+	$("#menu_links").delegate("a.quickview", "click", function(e) {
 		var link = this.innerHTML;
-		if (link == "Home") {
-			return true;
-		}
-		$("#menu_preview").show("normal");
+		var url = this.href;
+		//$("#menu_preview").show("normal");
+		$.ajax({
+			url: "/" + link.toLowerCase() + "/quickview",
+			success: function(data) {
+				$("#menu_preview_loader").hide();
+				$("#menu_preview").html(data);
+				$("#menu_preview").show("normal");
+			},
+			error: function() {
+				// If the quickview can't be loaded via ajax, follow the link
+				document.location.href = url;
+			}
+		});
 		return false; // Progressive enhancement -- prevent link
 	});
 });

@@ -5,6 +5,8 @@
 <title>{% block page_title %}Phi Sigma Pi - Mizzou{% endblock %}</title>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}/js/scripts.js"></script>
+
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Molengo" type="text/css">
 <link rel="stylesheet" href="{{ MEDIA_URL }}/css/reset.css" type="text/css">
 <link rel="stylesheet" href="{{ MEDIA_URL }}/css/styles.css" type="text/css">
@@ -19,14 +21,17 @@
 		</div>
 	</div>
 	<div id="main">
-		<!-- div id="menu_links">
+		<div id="menu_links">
 			<ul>
 				<li><a href="/">Home</a></li>
 				<li><a href="">Events</a></li>
 				<li><a href="">Committees</a></li>
 				<li><a href="">Brothers</a></li>
 			</ul>
-		</div-->
+			<div id="menu_preview">
+				<img src="{{ MEDIA_URL }}/img/ajax.gif">
+			</div>
+		</div>
 	    <div id="wrapper">
 	        <div id="sidebar">
 	        	{% block sidebar %}{% endblock %}

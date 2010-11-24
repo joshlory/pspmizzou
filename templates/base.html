@@ -14,11 +14,20 @@
 </head>
 <body>
 	<div id="header">
-		<div id="login">
+		{% if user.is_authenticated %}
+		<form id="login" action="{% url logout %}" method="post">
+			{% csrf_token %}
+			Welcome back, {{ user.username }}.
+			<input type="submit" value="Logout"></input>
+		</form>
+		{% else %}
+		<form id="login" action="{% url login %}?next={{ request.path }}" method="post">
+			{% csrf_token %}
 			<input type="text" name="user" value="Username"></input>
 			<input type="password" name="pass" value="Password"></input>
 			<input type="submit" value="Login"></input>
-		</div>
+		</form>
+		{% endif %}
 	</div>
 	<div id="main">
 		<div id="menu_links">

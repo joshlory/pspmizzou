@@ -6,6 +6,17 @@ if (window.pspmizzou === undefined) {
 }
 
 $(function() {
+	
+	$("#login").delegate("input[name=user], input[name=pass]", "focus", function(e) {
+		if (this.name == "user" && this.value == "Username") this.value = "";
+		if (this.name == "pass" && this.value == "Password") this.value = "";
+	});
+	
+	$("#login").delegate("input[name=user], input[name=pass]", "blur", function(e) {
+		if (this.name == "user" && this.value == "") this.value = "Username";
+		if (this.name == "pass" && this.value == "") this.value = "Password";
+	});
+	
 	$("#menu_links").delegate("a.quickview", "click", function(e) {
 		var link = this.innerHTML;
 		var url = this.href;

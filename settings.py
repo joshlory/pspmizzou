@@ -114,10 +114,11 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.humanize',
-    'events',
-    'committees',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'events',
+    'committees',
+    'rush',
 )
 
 try: # Override with settings from local_settings.py, if applicable

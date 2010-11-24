@@ -9,7 +9,7 @@ urlpatterns = patterns('',
     
     (r'^events/', include('events.urls')),
     (r'^committees/', include('committees.urls')),
-#    (r'^brothers', include('brothers.urls')),
+    (r'^rush/', include('rush.urls')),
     
     url(r'^$', view_index, name='view_index'),
     url(r'^login/', view_login, name='login'),

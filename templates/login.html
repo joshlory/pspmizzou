@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block sidebar %}
+
+<div style="width: 260px; height: 180px; padding: 10px; background: #ccc; margin-bottom: 10px; font-size: 10px; text-shadow: none;">SIDEBAR 1</div>
+
+{% endblock %}
+
+{% block main_content %}
+
+<style type="text/css">
+	.login input {
+		margin-bottom: 1em;
+	}
+	.login p {
+		width: 210px;
+	}
+	.login input[type=submit] {
+		padding: 2px 8px;
+		font-size: 12px;
+	}
+	#brother_login {
+		width: 270px;
+		margin-left: 20px;
+		border-right: 1px solid #ccc;
+		float: left;
+	}
+	#guest_login {
+		width: 250px;
+		float: right;
+	}
+	h4 {
+		font: bold 18px "Palatino Linotype", "Book Antiqua", Palatino, serif;
+		margin-bottom: 0.5em;
+	}
+	.submit_wrapper {
+		text-align: right;
+	}
+</style>
+
+{% if failed %}
+<p class="error">Wrong username or password.</p>
+{% endif %}
+
+{% if disabled %}
+<p class="error">Account disabled.</p>
+{% endif %}
+
+<div id="brother_login">
+	<h4>Brother Login</h4>
+	<form class="login" action="{% url login %}?next={{ next }}" method="post">
+		{% csrf_token %}
+		<p class="smalltext">Username:</p>
+		<p><input type="text" name="user" style="width: 200px;"></input></p>
+		<p class="smalltext">Password:</p>
+		<p><input type="password" name="pass" style="width: 200px;"></input></p>
+		<p class="submit_wrapper"><input type="submit" value="Login"></input></p>
+	</form>
+</div>
+<div id="guest_login">
+	<h4>Guest Login</h4>
+	<form class="login" action="{% url login %}?next={{ next }}" method="post">
+		{% csrf_token %}
+		<input type="hidden" name="user" value="Guest"></input>
+		<p class="smalltext">Username:</p>
+		<p><input type="text" name="guest" value="Guest" style="width: 200px;" disabled="disabled"></input></p>
+		<p class="smalltext">Enter the fraternal word (all lowercase):</p>
+		<p><input type="password" name="pass" style="width: 200px;"></input></p>
+		<p class="submit_wrapper"><input type="submit" value="Login"></input></p>
+	</form>
+</div>
+
+{% endblock %}

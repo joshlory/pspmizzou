@@ -241,3 +241,11 @@ th.sun {
 	font-size: 0.85em;
 	color: #666;
 }
+.error {
+	padding: 2px 8px;
+	margin-bottom: 1em;
+	border-top: 1px solid #c00;
+	border-bottom: 1px solid #c00;
+	background: #f99;
+	text-shadow: none;
+}

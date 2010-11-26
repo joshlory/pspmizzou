@@ -146,13 +146,13 @@ input[type=submit] {
     margin: 0 300px 0 0;
 }
 #footer {
-	border: 1px solid #000;
+	border: 1px solid #ccc;
 	width: 920px;
 	height: 180px;
 	padding: 10px;
 	margin: 10px auto;
-	color: #000;
-	text-shadow: 0 1px #444;
+	color: #ccc;
+	text-shadow: 1px 0 #666;
 }
 #footer h3 {
 	border: 0;
@@ -173,6 +173,10 @@ h2 {
 h3 {
     margin: 0.5em 0;
     border-bottom: 1px solid #999;
+}
+h4 {
+	font: bold 18px "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	margin-bottom: 0.5em;
 }
 .standard-tbl {
     /*border-bottom: 3px double #999;*/
@@ -212,7 +216,7 @@ table.month {
 }
 th.month {
 	/*text-align: left;*/
-	font-size: 1.2em;
+	font: bold 18px "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 th.mon, th.tue, th.wed, th.thu, th.fri, th.sat, th.sun {
 	padding: 0;

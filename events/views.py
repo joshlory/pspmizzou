@@ -4,7 +4,7 @@ from django.shortcuts import render_to_response
 
 from events.models import Event, EventCalendar
 
-from datetime import datetime
+import datetime
 
 def view_event(request, event_id):
     #return HttpResponse("event detail view: " + event_id)
@@ -16,20 +16,18 @@ def view_event(request, event_id):
 
 def view_events_quickview(request):
     context = RequestContext(request, {})
-    now = datetime.now()
+    now = datetime.datetime.now()
     month_events = Event.objects \
-        .filter(start_datetime__gte=datetime(now.year, now.month, 1)) \
-        .filter(start_datetime__lt=datetime(now.year, now.month + 1, 1))
+        .filter(start_datetime__month=now.month)
     cal = EventCalendar(month_events, quickview=True)
     context['calendar'] = cal.formatmonth(now.year, now.month)
     return render_to_response("events_quickview.html", context)
 
 def view_events_overview(request):
     context = RequestContext(request, {})
-    now = datetime.now()
+    now = datetime.datetime.now()
     month_events = Event.objects \
-        .filter(start_datetime__gte=datetime(now.year, now.month, 1)) \
-        .filter(start_datetime__lt=datetime(now.year, now.month + 1, 1))
+        .filter(start_datetime__month=now.month)
     cal = EventCalendar(month_events)
     context['calendar'] = cal.formatmonth(now.year, now.month)
     events = Event.objects.order_by("start_datetime")[:50] # limit 50
